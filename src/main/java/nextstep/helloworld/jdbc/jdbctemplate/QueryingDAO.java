@@ -1,11 +1,13 @@
 package nextstep.helloworld.jdbc.jdbctemplate;
 
 import nextstep.helloworld.jdbc.Customer;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class QueryingDAO {
@@ -29,7 +31,7 @@ public class QueryingDAO {
      */
     public int count() {
         String sql = "select count(*) from customers";
-        return 0;
+        return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
     /**
